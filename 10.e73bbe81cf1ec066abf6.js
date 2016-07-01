@@ -1,0 +1,1 @@
+webpackJsonp([10],{435:function(e,o,t){var p,r;r=t(674),e.exports=p||{},e.exports.__esModule&&(e.exports=e.exports["default"]),r&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=r)},674:function(e,o){e.exports=" <div> <router-view class=router-view transition=slide-up keep-alive></router-view> </div> "}});
