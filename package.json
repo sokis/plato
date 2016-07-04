@@ -91,7 +91,7 @@
     "string-template": "^1.0.0",
     "vue": "^1.0.26",
     "vue-router": "^0.7.13",
-    "vuex-fsa": "^0.7.1",
+    "vuex": "^1.0.0-rc",
     "vuex-localstorage": "^0.1.2",
     "vuex-promise": "^0.1.4",
     "whatwg-fetch": "^1.0.0"
