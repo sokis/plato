@@ -12,7 +12,7 @@
 <script>
 import CImage from 'plato-components/c-image'
 import Modal from 'plato-components/c-modal'
-import { setEnv } from 'vx/actions'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   data () {
     return {
@@ -30,23 +30,21 @@ export default {
     }
   },
 
+  computed: mapGetters(['authorized']),
+
+  methods: mapActions(['setEnv']),
+
   route: {
     activate () {
-      if (!this.env.authorized) {
+      if (!this.authorized) {
         history.back()
         return
       }
     }
   },
 
-  vuex: {
-    actions: {
-      setEnv
-    }
-  },
-
   watch: {
-    'env.authorized' (val) {
+    authorized (val) {
       if (!val) {
         this.$nextTick(() => {
           this.$route.router.go('/')

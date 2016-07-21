@@ -5,7 +5,6 @@
 [Online Demo](http://crossjs.com/plato), [Documentation](http://crossjs.com/plato/#!/docs)
 
 [![Travis](https://img.shields.io/travis/crossjs/plato.svg?style=flat-square)](https://travis-ci.org/crossjs/plato)
-[![Coveralls](https://img.shields.io/coveralls/crossjs/plato.svg?style=flat-square)](https://coveralls.io/github/crossjs/plato)
 [![dependencies](https://david-dm.org/crossjs/plato.svg?style=flat-square)](https://david-dm.org/crossjs/plato)
 [![devDependency Status](https://david-dm.org/crossjs/plato/dev-status.svg?style=flat-square)](https://david-dm.org/crossjs/plato#info=devDependencies)
 
@@ -16,6 +15,12 @@
 
 ## Change Log
 
+- 20160715
+  - use vuex-localstorage@0.2.0, with expires options
+- 20160709 :warning: *Breaking Changes*
+  - use [vuex@2.0.0-rc.1](https://github.com/vuejs/vuex/releases/tag/v2.0.0-rc.1)
+  - update vuex-promise@2.0.0.rc.1
+  - rewite vx/**
 - 20160704 :warning: *Breaking Changes*
   - use [vuex@1.0.0-rc](https://github.com/vuejs/vuex/releases/tag/v1.0.0-rc)
   - update vuex-promise@1.0.1

@@ -36,8 +36,7 @@ import CRouteLink from 'plato-components/c-route-link'
 import CNavbar from 'plato-components/c-navbar'
 import CRoute from 'plato-components/c-route'
 import store from 'vx/store'
-import { progress, toasts } from 'vx/getters'
-import { setEnv } from 'vx/actions'
+import { mapGetters, mapActions } from 'vuex'
 import { routes } from 'routes'
 
 export default {
@@ -52,14 +51,16 @@ export default {
   // },
 
   computed: {
+    ...mapGetters(['lang', 'i18n', 'progress', 'toasts']),
     routes () {
       return walkRoutes.call(this, routes, (key, route) => {
-        return key !== '/' && route.auth !== !this.env.authorized
+        return key !== '/' && route.auth !== !this.authorized
       })
     }
   },
 
   methods: {
+    ...mapActions(['setEnv']),
     historyBack () {
       history.back()
     }
@@ -67,29 +68,17 @@ export default {
 
   created () {
     // for get i18n in first
-    this.setEnv(this.env)
-    if (this.env.lang) {
-      document.documentElement.dir = this.env.lang === 'ar' ? 'rtl' : 'ltr'
+    if (!this.i18n) {
+      this.setEnv({
+        lang: this.lang
+      })
     }
+    document.documentElement.dir = this.lang === 'ar' ? 'rtl' : 'ltr'
   },
 
   watch: {
-    'env.lang' (val) {
-      if (val) {
-        this.$nextTick(() => {
-          document.documentElement.dir = val === 'ar' ? 'rtl' : 'ltr'
-        })
-      }
-    }
-  },
-
-  vuex: {
-    getters: {
-      progress,
-      toasts
-    },
-    actions: {
-      setEnv
+    lang (val) {
+      document.documentElement.dir = val === 'ar' ? 'rtl' : 'ltr'
     }
   },
 

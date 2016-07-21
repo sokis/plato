@@ -5,7 +5,6 @@ import Validator from 'plato-validator'
 import App from 'app'
 import { routes, alias } from 'routes'
 import store from 'vx/store'
-import { env } from 'vx/getters'
 
 if (module.hot) {
   module.hot.accept()
@@ -13,20 +12,11 @@ if (module.hot) {
 
 Vue.config.debug = __DEV__
 
-// global mixins
-Vue.mixin({
-  vuex: {
-    getters: {
-      env
-    }
-  }
-})
-
 // 国际化，如果未使用，请移除
 Vue.use(I18n, {
   // 翻译资源库
   data () {
-    return env(store.state).i18n
+    return store.getters.i18n
   }
 })
 
@@ -46,7 +36,8 @@ router.map(routes)
 router.alias(alias)
 
 router.beforeEach(transition => {
-  if (transition.to.auth && !env(store.state).authorized) {
+  store.dispatch('setProgress', 80)
+  if (transition.to.auth && !store.getters.authorized) {
     transition.abort()
   } else {
     transition.next()
@@ -54,6 +45,7 @@ router.beforeEach(transition => {
 })
 
 router.afterEach(transition => {
+  store.dispatch('setProgress', 100)
   window.scrollTo(0, 0)
 })
 
