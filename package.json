@@ -99,7 +99,7 @@
     "plato-request": "^0.0.3",
     "plato-styles": "^0.0.0",
     "plato-validator": "^0.0.3",
-    "vue": "^1.0.26",
+    "vue": "^2.5.15",
     "vue-router": "^0.7.13",
     "vuex": "^2.0.0-rc.3",
     "vuex-localstorage": "^0.2.0",
